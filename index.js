@@ -29,6 +29,8 @@ function subsetOfWords(x,y) {
     console.log(words.slice(x,y));
 }
 
+subsetOfWords(5,11)
+
 function sortWords() {
     console.log(words.sort());
 }
@@ -36,3 +38,4 @@ function sortWords() {
 sortWords()
 
 /////////////////////////////////////////////
+
