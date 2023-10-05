@@ -1,4 +1,10 @@
 const words = require("./words.json");
+const readline = require('readline');
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+
+});
 
 function allWords(){
 	console.log(words);
@@ -76,16 +82,22 @@ function wordsWithQ(){
 wordsWithQ();
 
 
-// function findWordsWithLetters(words){
-// const matchingWords = [];
+ function findWordsWithLetters(words, letter){
+ const matchingWords = [];
 
-// for (let i = 0; i < words.length; i++) {
-// 	const word = words[i];
-// if (word.includes(letter.toLowercase())){
-// 	matchingWords.push(word);
-// }	
-// }
-// console.log(matchingWords);
-// }
+ for (let i = 0; i < words.length; i++) {
+ 	const word = words[i];
+ if (word.includes(letter.toLowerCase())){
+ 	matchingWords.push(word);
+ }	
+ }
+ console.log(matchingWords);
+ }
+rl.question('Enter a letter: ', (letter) => {
+	const inputLetter = letter.toLowerCase();
+ findWordsWithLetters(words, inputLetter);
+rl.close();
+}); 
 
-// findWordsWithLetters()
+
+// function letterMatch()
