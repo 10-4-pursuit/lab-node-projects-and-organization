@@ -1,28 +1,29 @@
 const words = require("./words.json");
 
 
-// prints a menu with all available options
-console.log(`Enter a number from the corresponding menu:\n
-1. All words\n
-2. First 10 words\n
-3. Next 10 words\n
-4. First x words (accepts x as argument in position 3)\n
-5. Subset of words (accepts x and y as arguments in position 3 and 4 respectively)\n
-6. Sort words\n
-7. Find words with q\n
-8. Find words with letter (accepts letter as argument in position 5)\n
-`);
+// Display the menu options for the user to choose from
+function displayMenu() {
+  console.log(`Enter a number from the corresponding menu:\n
+  1. All words\n
+  2. First 10 words\n
+  3. Next 10 words\n
+  4. First x words (accepts x as argument in position 3)\n
+  5. Subset of words (accepts x and y as arguments in position 3 and 4 respectively)\n
+  6. Sort words\n
+  7. Find words with q\n
+  8. Find words with letter (accepts letter as argument in position 3)\n
+  `);
+}
 
-
-// The function that runs the other functions
+// function that runs the other functions based on command-line args
 function funRunner() {
   let args = process.argv;
   let choice = args[2];
   let x = args[3];
   let y = args[4];
   let letter = args[5];
-  
-  if (choice === '8'){
+
+  if (choice === "8") {
     letter = args[3];
   }
 
@@ -52,11 +53,17 @@ function funRunner() {
       findWordsWithLetter(letter);
       break;
     default:
-      console.log("Invalid choice, try again.");
+      console.log("Invalid choice, try again.\n");
   }
 }
 
-funRunner();
+// Check if a valid choice is not provided in command-line arguments and display the menu
+if (process.argv.length <= 2) {
+  displayMenu();
+} else {
+  // If a valid choice is provided, run the function directly
+  funRunner();
+}
 
 //prints all words
 function allWords() {
@@ -116,4 +123,3 @@ function findWordsWithLetter(letter) {
   } while (incr < 10);
   console.log(wordsWithLetter);
 }
-
