@@ -5,6 +5,7 @@ function allWords() {
 }
 allWords();
 
+
 function firstTenWords() {
     const wordHolder = [];
     for (let i = 0; i < 10; i++) {
@@ -14,10 +15,12 @@ function firstTenWords() {
 }
 firstTenWords();
 
+
 function nextTenWords() {
     console.log(words.slice(10, 20));
 }
 nextTenWords();
+
 
 function firstXWords(x) {
     console.log(words.slice(0, x));
@@ -34,6 +37,7 @@ function sortWords() {
 }
 sortWords();
 
+
 function wordsWithQ() {
     let specificWords = [];
     for (const word of words) {
@@ -44,6 +48,7 @@ function wordsWithQ() {
     console.log(specificWords);
 }
 wordsWithQ();
+
 
 console.log(process.argv);
 
@@ -65,7 +70,37 @@ findWordsWithLetter();
 
 
 
-function lettersMatch() {
-    
+function lettersMatch(guess) {
+    if (guess.length !== 5) {
+        return `please enter 5 letter word`
+    }
+    const filteredWords = words.filter(word => {
+        for (let letter of guess) {
+            if (word.includes(letter)) {
+                return true
+            }
+        }
+        return false
+    })
+    return filteredWords
 }
-lettersMatch();
+console.log(lettersMatch(`lodge`));
+
+
+
+function letttersExactMatch(guess, target) {
+
+    if (guess.length !== 5) {
+        return `please enter 5 letter word`
+    }
+    const aStack = [];
+        for (let i = 0; i < guess.length; i++) {
+            if (target[i] !== guess[i]) {
+                aStack.push(`_`)
+            } else {
+                aStack.push(target[i])
+            }
+        }
+    return aStack
+}
+console.log(letttersExactMatch(`acorn`, `adorn`));
