@@ -52,5 +52,11 @@ function findWordsWithLetter(letter){
     return words.filter(word => word.includes(letter));  
 }
 
-console.log(findWordsWithLetter("x"))
+const letter = process.argv[2];
+const result = findWordsWithLetter(letter);
+console.log(result);
+
+
+
+
 
