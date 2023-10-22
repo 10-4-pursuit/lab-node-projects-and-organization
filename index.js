@@ -1,5 +1,5 @@
 const words = require("./words.json") 
-/** 
+
 function allWords(words) {
 // logs all the words
     console.log(words);
@@ -56,40 +56,40 @@ const letter = process.argv[2];
 const result = findWordsWithLetter(letter);
 console.log(result);
 
-*/
+
 
 //BONUS
 
-// function lettersMatch(letters) {
-// // Check if the input is valid.
-//     if (letters.length > 5) {
-//         console.log ("The input list of letters must be at most 5 letters long.");
-//   }
+function lettersMatch(letters) {
+// Check if the input is valid.
+    if (letters.length > 5) {
+        console.log ("The input list of letters must be at most 5 letters long.");
+  }
 
-//  // Create a map to store the number of occurrences of each letter in the input.
-//     const letterCounts = {};
-//     for (const letter of letters) {
-//         letterCounts[letter] = (letterCounts[letter] || 0) + 1;
-//  }
+ // Create a map to store the number of occurrences of each letter in the input.
+    const letterCounts = {};
+    for (const letter of letters) {
+        letterCounts[letter] = (letterCounts[letter] || 0) + 1;
+ }
    
-//  // Filter the list of words to only include words that contain all of the input letters.
-//     const matchingWords = words.filter((word) => {
-//         for (const letter of letters) {
-//         if (!letterCounts[letter] || !word.includes(letter)) {
-//             return false;
-//      }
-//    }
+ // Filter the list of words to only include words that contain all of the input letters.
+    const matchingWords = words.filter((word) => {
+        for (const letter of letters) {
+        if (!letterCounts[letter] || !word.includes(letter)) {
+            return false;
+     }
+   }
 
-//     return true;
-//  });
+    return true;
+ });
 
-//     return matchingWords;
-//     }
+    return matchingWords;
+    }
 
 
-// const letters = process.argv[2];
-// const conclusion = lettersMatch(letters);
-// console.log(conclusion);
+const letters = process.argv[2];
+const conclusion = lettersMatch(letters);
+console.log(conclusion);
 
 /**
   Write a function `letttersExactMatch` that lets you input a five-character string. Put letters with the exact placement in their place, and put a placeholder like `.` or `_` for unknown letters.
@@ -113,7 +113,7 @@ function lettersExactMatch(letters, words){
 
 console.log(lettersExactMatch("adorn", "acorn"))
 
-/** STILL NEED TO WORK ON THIS
+// STILL NEED TO WORK ON THIS
 function lettersPosition(letters, words, exactMatch = false){
 
     // Check if the input is valid.
@@ -135,7 +135,7 @@ function lettersPosition(letters, words, exactMatch = false){
 return matchingWords;
 }
 
-/*
+
 
 
 
