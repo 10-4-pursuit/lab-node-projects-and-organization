@@ -1,7 +1,7 @@
 const words = require("./words.json");
 
 
-// Display the menu options for the user to choose from
+//Display the menu options for the user to choose from
 function displayMenu() {
   console.log(`Enter a number from the corresponding menu:\n
   1. All words\n
@@ -12,6 +12,7 @@ function displayMenu() {
   6. Sort words\n
   7. Find words with q\n
   8. Find words with letter (accepts letter as argument in position 3)\n
+  9. Find words with entered letters (accepts letters as argument in position 3, up to 5 letters)\n
   `);
 }
 
@@ -22,9 +23,13 @@ function funRunner() {
   let x = args[3];
   let y = args[4];
   let letter = args[5];
+  let letters = args[6];
 
   if (choice === "8") {
     letter = args[3];
+  }
+  if (choice === "9") {
+    letters = args[3];
   }
 
   switch (choice) {
@@ -52,6 +57,11 @@ function funRunner() {
     case "8":
       findWordsWithLetter(letter);
       break;
+    case "9":
+      lettersMatch(letters);
+      break;
+    // case '10':
+    //   lettersExactMatch(letter);
     default:
       console.log("Invalid choice, try again.\n");
   }
@@ -68,7 +78,6 @@ if (process.argv.length <= 2) {
 //prints all words
 function allWords() {
   console.log(words);
-  // return data;
 }
 
 //prints first 10 words
@@ -112,14 +121,36 @@ function findWordsWithQ() {
 
 function findWordsWithLetter(letter) {
   const wordsWithLetter = [];
-  let incr = 0;
-  do {
+  let i = 0;
     for (const word of words) {
       if (word.includes(letter)) {
         wordsWithLetter.push(word);
       }
     }
-    incr++;
-  } while (incr < 10);
   console.log(wordsWithLetter);
+}
+
+function lettersMatch(letters) {
+  if (letters === 0 || letters > 5) {
+    console.log("Invalid number of letters");
+  } else {
+    console.log(words.filter(word => word.includes(letters)));
+  }
+}
+
+function lettersExactMatch(guess) {
+  if (guess.length !== 5 || guess.length === 0) {
+    console.log("Invalid guess, try again.");
+  }
+  let
+  const matchedWords = words.filter(word => {
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] !== word[i] && guess[i] !== "." && guess[i] !== "_") {
+        return false;
+      }
+    }
+
+    return true;
+  });
+  console.log(matchedWords);
 }
